@@ -10,6 +10,14 @@ namespace Cats.Models
     {
         public async Task<List<Cat>> GetCats()
         {
+            var Service = new Services.AzureService<Cat>();
+            var Items = await Service.GetTable();
+            return Items.ToList();
+        }
+
+        /*
+        public async Task<List<Cat>> GetCats()
+        {
             List<Cat> Cats;
             var URLWebAPI = "http://demos.ticapacitacion.com/cats";
             using (var Client = new System.Net.Http.HttpClient())
@@ -19,5 +27,6 @@ namespace Cats.Models
             }
             return Cats;
         }
+        */
     }
 }
